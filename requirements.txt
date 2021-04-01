@@ -1,0 +1,8 @@
+-e .
+aws-cdk.core
+aws-cdk.aws-lambda
+aws_cdk.aws_s3
+aws_cdk.aws_lambda_event_sources
+boto3
+pytest
+requests
