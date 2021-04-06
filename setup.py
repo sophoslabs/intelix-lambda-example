@@ -19,7 +19,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="cdk_intelix_lambda"),
 
     install_requires=[
-        "aws-cdk.core==1.91.0",
+        "aws-cdk.core>=1.91.0",
     ],
 
     python_requires=">=3.6",
