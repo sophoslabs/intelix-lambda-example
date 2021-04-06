@@ -43,15 +43,15 @@ CDK will pull from your AWS CLI credentials, ensure you have credentials configu
 aws configure
 ```
 
-### Create Python Environment
+### Clone repository
 ```
-cd intelix-lambda
-python3 -m venv .venv
+git clone https://github.com/sophoslabs/intelix-lambda-example.git
 ```
 
-### Bootstrap CDK
+### Create Python Environment
 ```
-cdk bootstrap
+cd intelix-lambda-example
+python3 -m venv .venv
 ```
 
 ## Deploy
@@ -69,6 +69,30 @@ pip3 install -r requirements.txt
 ### Install python dependencies into the Lambda code directory
 ```
 pip3 install requests -t ./resources
+```
+
+### Bootstrap CDK
+```
+cdk bootstrap
+```
+
+### Obtain Sophos Intelix Credentials
+
+Register for Intelix and receive API credentials:
+https://aws.amazon.com/marketplace/pp/B07SLZPMCS
+
+### Pass Intelix Crednentials to Lambda
+
+In our example, we will use a Lambda environment variable to pass our Intelix Credentials to Lambda. In a production setup, you may prefer to use [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) to securely store your credentials.
+
+Edit the file:
+```
+cdk_intelix_lambda/intelix_lambda_service.py
+```
+
+Add your base64 encoded Intelix credentials to the line containing:
+```
+INTELIX_CREDENTIALS="<YOUR BASE64 CODED CLIENT_ID:CLIENT_SECRET>"
 ```
 
 ### Synth template
